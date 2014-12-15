@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Download de Photo</title>
+	<script type="text/javascript">
+		// !! Assumes variable url contains a valid URI to a file on a server and filePath is a valid path on the device
+
+		function download(){
+			var fileTransfer = new FileTransfer();
+			var uri = encodeURI("imagens/mergulho.jpg");
+
+			fileTransfer.download(
+			    uri,
+			    filePath,
+			    function(entry) {
+			        console.log("download complete: " + entry.fullPath);
+			    },
+			    function(error) {
+			        console.log("download error source " + error.source);
+			        console.log("download error target " + error.target);
+			        console.log("upload error code" + error.code);
+			    }
+			);
+		}
+	</script>
+</head>
+<body>
+	<button onclick="javascript: download();">Fazer download</button>
+</body>
+</html>
